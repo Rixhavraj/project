@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPS NOTES</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        .navbar {
+            background: #153659;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;z-index: 100;
+            width: 100%;
+            position: fixed;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar input {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .navbar input:focus {
+            width: 250px;
+            outline: none;
+        }
+        .navbar button {
+            padding: 10px;
+            margin-left: 10px;
+            border: none;
+            background: white;
+            color: #007bff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .navbar button:hover {
+            background: #0056b3;
+            color: white;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .note {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+        .note img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .download-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display:block;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>PPS NOTES...</h2>
+        <input type="text" id="search" placeholder="Search Chapter Name">
+        <button onclick="searchNotes()">Search</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <div class="note">
+            <p>file handling</p>
+            <img src="ppsfile1.jpg" alt="file handling">
+            <p>File handling is used in various applications, including:
+
+                Data Storage and Retrieval – Storing and accessing user data, logs, or configurations.
+                Configuration Files – Reading and writing settings in .ini, .json, or .xml files.
+                Logging – Maintaining logs for debugging and monitoring.
+                Data Processing – Reading and writing CSV, text, or binary files for data analysis.
+                Database Management – Importing/exporting data to and from files.</p>
+            <a href="ppsfile1.jpg" download class="download-btn">Download</a>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <div class="note">
+                <p>file handling</p>
+                <img src="ppsfile2.jpg" alt="file handling">
+                <a href="ppsfile2.jpg" download class="download-btn">Download</a>
+            </div>
+
+            <div class="gallery" id="gallery">
+                <div class="note">
+                    <p>file handling</p>
+                    <img src="ppsfile3.jpg" alt="file handling">
+                    <a href="ppsfile3.jpg" download class="download-btn">Download</a>
+                </div>
+
+                <div class="gallery" id="gallery">
+                    <div class="note">
+                        <p>file handling</p>
+                        <img src="ppsfile4.jpg" alt="file handling">
+                        <a href="ppsfile4.jpg" download class="download-btn">Download</a>
+                    </div>
+
+
+
+
+
+        </div>
+
+        <script>
+            function searchNotes() {
+                let query = document.getElementById('search').value.toLowerCase();
+                let notes = document.querySelectorAll('.note');
+                
+                notes.forEach(note => {
+                    if (note.querySelector('img').alt.toLowerCase().includes(query)) {
+                        note.style.display = 'block';
+                    } else {
+                        note.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>
